@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data;
 using DB;
 
-namespace TP7_GRUPO_2
+namespace Business
 {
-    public class NegocioSucursales
+    public static class NegocioSucursales
     {
+        public static DataTable ObtenerSucursales()
+        {
+            return DBClass.ObtenerTabla("SELECT * FROM Sucursal");
+        }
     }
 }
