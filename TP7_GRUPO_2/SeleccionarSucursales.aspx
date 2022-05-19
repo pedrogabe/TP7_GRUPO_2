@@ -6,18 +6,51 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            width: 227px;
+        }
+        .auto-style3 {
+            width: 307px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Table ID="Table1" runat="server" Width="100%">
-                <asp:TableRow runat="server">
-                    <asp:TableCell runat="server"></asp:TableCell>
-                    <asp:TableCell runat="server"></asp:TableCell>
-                    <asp:TableCell runat="server"></asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
+            <table class="auto-style1">
+                <tr>
+                    <td>
+                        <asp:Label ID="lblIntegrantes" runat="server" Text="N° Grupo 2: "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hlListadoSucursales" runat="server">Listado de sucursales</asp:HyperLink>
+                    </td>
+                    <td>
+                        <asp:HyperLink ID="hlMostrarSucursales" runat="server">Mostrar sucursales seleccionadas</asp:HyperLink>
+                    </td>
+                </tr>
+            </table>
         </div>
+        <table class="auto-style1">
+            <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="lblBusqueda" runat="server" Text="Busqueda nombre de sucursal:"></asp:Label>
+                </td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="txtBusqueda" runat="server" Width="255px"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:Button ID="btnBusqueda" runat="server" Text="Buscar" />
+                </td>
+            </tr>
+        </table>
+        <table class="auto-style1">
+            <tr>
+                <td>
         <asp:ListView ID="lvSucursales" runat="server" DataKeyNames="Id_Sucursal" DataSourceID="SqlDataSource1" GroupItemCount="3">
             <AlternatingItemTemplate>
                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">
@@ -125,7 +158,22 @@
                     <br /></td>
             </SelectedItemTemplate>
         </asp:ListView>
+                </td>
+                <td>
+                    <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource2">
+                        <ItemTemplate>
+                            <asp:Button ID="btnProvincia" runat="server" Text='<%# Eval("DescripcionProvincia") %>' />
+                            <br />
+                            <br />
+                        </ItemTemplate>
+                    </asp:DataList>
+                </td>
+            </tr>
+        </table>
+        <br />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursales %>" SelectCommand="SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
+        <br />
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString2 %>" SelectCommand="SELECT [DescripcionProvincia] FROM [Provincia]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
