@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Business;
+using System.Data;
 
 namespace TP7_GRUPO_2
 {
@@ -15,5 +16,53 @@ namespace TP7_GRUPO_2
             
         }
 
+        public DataTable crearTabla()
+        {
+            DataTable dt = new DataTable();
+            DataColumn columna = new DataColumn("IdSucursal", System.Type.GetType("System.Int32"));
+            dt.Columns.Add(columna);
+            columna = new DataColumn("NombreSucursal", System.Type.GetType("System.String"));
+            dt.Columns.Add(columna);
+            columna = new DataColumn("DescripcionSucursal", System.Type.GetType("System.String"));
+            dt.Columns.Add(columna);
+            return dt;
+        }
+
+        public void agregarFila(DataTable tabla, String IdSucursal, String NombreSucursal, String DescripcionSucursal)
+        {
+            DataRow dr = tabla.NewRow();
+            dr["IdSucursal"] = IdSucursal;
+            dr["NombreSucursal"] = NombreSucursal;
+            dr["DescripcionSucursal"] = DescripcionSucursal;
+            tabla.Rows.Add(dr);
+
+        }
+
+        protected void btnSeleccionar_Command(object sender, CommandEventArgs e)
+        {
+            if(e.CommandName == "eventoSeleccionar")
+            {
+                string info = e.CommandArgument.ToString();
+                string[] arg = new string[3];
+                char[] splitter = { ';' };
+                arg = info.Split(splitter);
+                if (Session["tabla"] == null)
+                {
+                    Session["list"] = new List<int>();
+                    Session["tabla"] = crearTabla();
+                }
+                if (((List<int>)Session["list"]).Contains(Int32.Parse(arg[0])))
+                {
+                    lblMensaje.Text = "Producto ya seleccionado!";
+                }
+                else
+                {
+                    ((List<int>)Session["list"]).Add(Int32.Parse(arg[0]));
+                    agregarFila(((DataTable)Session["tabla"]), arg[0], arg[1], arg[2]);
+                    lblMensaje.Text = "Producto agregado: " + arg[1];
+                }
+            }
+        }
+        
     }
 }

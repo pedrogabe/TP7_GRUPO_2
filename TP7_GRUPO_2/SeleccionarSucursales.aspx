@@ -16,6 +16,12 @@
         .auto-style3 {
             width: 307px;
         }
+        .auto-style4 {
+            width: 210px;
+        }
+        .auto-style5 {
+            width: 345px;
+        }
     </style>
 </head>
 <body>
@@ -23,14 +29,14 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td>
+                    <td class="auto-style4">
                         <asp:Label ID="lblIntegrantes" runat="server" Text="N° Grupo 2: "></asp:Label>
                     </td>
-                    <td>
-                        <asp:HyperLink ID="hlListadoSucursales" runat="server">Listado de sucursales</asp:HyperLink>
+                    <td class="auto-style5">
+                        <asp:HyperLink ID="hlListadoSucursales" runat="server" NavigateUrl="SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
                     </td>
                     <td>
-                        <asp:HyperLink ID="hlMostrarSucursales" runat="server">Mostrar sucursales seleccionadas</asp:HyperLink>
+                        <asp:HyperLink ID="hlMostrarSucursales" runat="server" NavigateUrl="ListadoSucursalesSeleccionadas.aspx">Mostrar sucursales seleccionadas</asp:HyperLink>
                     </td>
                 </tr>
             </table>
@@ -52,7 +58,7 @@
             <tr>
                 <td>
         <asp:ListView ID="lvSucursales" runat="server" DataKeyNames="Id_Sucursal" DataSourceID="SqlDataSource1" GroupItemCount="3">
-            <AlternatingItemTemplate>
+<%--            <AlternatingItemTemplate>
                 <td runat="server" style="background-color: #FFFFFF;color: #284775;">
                     <asp:Label ID="NombreSucursalLabel" runat="server" Text='<%# Eval("NombreSucursal") %>' Font-Bold="True"></asp:Label>
                     <br />
@@ -61,7 +67,7 @@
                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>'></asp:Label>
 
                 </td>
-            </AlternatingItemTemplate>
+            </AlternatingItemTemplate>--%>
             <EditItemTemplate>
                 <td runat="server" style="background-color: #999999;">Id_Sucursal:
                     <asp:Label ID="Id_SucursalLabel1" runat="server" Text='<%# Eval("Id_Sucursal") %>' />
@@ -121,6 +127,9 @@
                     <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' Width="20%" />
                     <br />
                     <asp:Label ID="DescripcionSucursalLabel" runat="server" Text='<%# Eval("DescripcionSucursal") %>'></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Button ID="btnSeleccionar" runat="server" CommandArgument='<%# Eval("Id_Sucursal")+";"+Eval("NombreSucursal")+";"+Eval("DescripcionSucursal") %>' CommandName="eventoSeleccionar" OnCommand="btnSeleccionar_Command" Text="Seleccionar" />
                 </td>
             </ItemTemplate>
             <LayoutTemplate>
@@ -170,6 +179,7 @@
                 </td>
             </tr>
         </table>
+        <asp:Label ID="lblMensaje" runat="server" Text="Label"></asp:Label>
         <br />
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursales %>" SelectCommand="SELECT [Id_Sucursal], [NombreSucursal], [DescripcionSucursal], [URL_Imagen_Sucursal] FROM [Sucursal]"></asp:SqlDataSource>
         <br />
