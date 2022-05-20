@@ -63,6 +63,18 @@ namespace TP7_GRUPO_2
                 }
             }
         }
-        
+
+        protected void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlDataSource1.SelectCommand = $"SELECT * FROM Sucursal WHERE NombreSucursal like '{txtBusqueda.Text}%'";
+                SqlDataSource1.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
