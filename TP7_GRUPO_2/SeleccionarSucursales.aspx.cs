@@ -76,5 +76,12 @@ namespace TP7_GRUPO_2
                 Console.WriteLine(ex.Message);
             }
         }
+
+        protected void btnProvincia_Click(object sender, EventArgs e)
+        {
+            string provinciaId = ((Button)sender).CommandArgument.ToString();
+            SqlDataSource1.SelectCommand = $"SELECT * FROM Sucursal WHERE Id_ProvinciaSucursal={provinciaId}";
+            SqlDataSource1.DataBind();
+        }
     }
 }
