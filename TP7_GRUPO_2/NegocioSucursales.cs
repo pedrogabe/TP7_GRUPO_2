@@ -1,13 +1,21 @@
-﻿using System.Data;
-using DB;
+﻿using System;
+using System.Web.UI.WebControls;
 
 namespace Business
 {
     public static class NegocioSucursales
     {
-        public static DataTable ObtenerSucursales()
+        public static void SeleccionarSucursales(SqlDataSource ds, string query)
         {
-            return DBClass.ObtenerTabla("SELECT * FROM Sucursal");
+            try
+            {
+                ds.SelectCommand = query;
+                ds.DataBind();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

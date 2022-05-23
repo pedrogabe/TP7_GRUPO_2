@@ -1,0 +1,19 @@
+﻿*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.main table{
+    margin: 0 auto;
+    text-align: left;
+}
+
+.provincia-btn{
+    width: 150px;
+}

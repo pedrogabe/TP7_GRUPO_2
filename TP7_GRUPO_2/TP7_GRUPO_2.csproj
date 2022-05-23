@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="ListadoSucursalesSeleccionadas.aspx" />
     <Content Include="SeleccionarSucursales.aspx" />
+    <Content Include="styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +90,7 @@
     <Compile Include="SeleccionarSucursales.aspx.designer.cs">
       <DependentUpon>SeleccionarSucursales.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tabla.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
