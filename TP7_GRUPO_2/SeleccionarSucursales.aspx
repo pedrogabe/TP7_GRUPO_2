@@ -5,6 +5,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link rel="stylesheet" href="styles.css" />
+      <style type="text/css">
+          .auto-style1 {
+              width: 352px;
+          }
+          .auto-style2 {
+              width: 212px;
+          }
+      </style>
   </head>
   <body>
     <form id="form1" runat="server">
@@ -12,10 +20,10 @@
 		    <div classs="product-table-wrapper">
 			    <table class="product-table">
 				    <tr>
-					    <td>
+					    <td class="auto-style2">
     						<asp:Label ID="lblIntegrantes" runat="server" Text="N° Grupo 2:"></asp:Label>
     					</td>
-    					<td>
+    					<td class="auto-style1">
 	    					<asp:HyperLink ID="hlListadoSucursales" runat="server" NavigateUrl="SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
 	    				</td>
 	    				<td>

@@ -40,8 +40,7 @@ namespace TP7_GRUPO_2
         protected void btnProvincia_Click(object sender, EventArgs e)
         {
             string provinciaId = ((Button)sender).CommandArgument.ToString();
-            SqlDataSource1.SelectCommand = $"SELECT * FROM Sucursal WHERE Id_ProvinciaSucursal={provinciaId}";
-            SqlDataSource1.DataBind();
+            SeleccionProvincia(provinciaId, SqlDataSource1);
         }
 
         protected void btnBusqueda_Click(object sender, EventArgs e)
@@ -54,6 +53,11 @@ namespace TP7_GRUPO_2
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+        public void SeleccionProvincia(string IddeProvincia, SqlDataSource sqlDataSourceExtra)
+        {
+            sqlDataSourceExtra.SelectCommand = $"SELECT * FROM Sucursal WHERE Id_ProvinciaSucursal={IddeProvincia}";
+            sqlDataSourceExtra.DataBind();
         }
     }
 }
