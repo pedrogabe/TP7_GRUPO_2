@@ -6,18 +6,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title></title>
 		<style type="text/css">
-			.auto-style1 {
-				width: 100%;
-			}
-
-			.auto-style2 {
-				width: 210px;
-			}
-
-			.auto-style3 {
-				width: 345px;
-			}
-		</style>
+            .auto-style1 {
+                width: 289px;
+            }
+            .auto-style2 {
+                width: 237px;
+            }
+        </style>
 	</head>
 	<body>
 		<form id="form1" runat="server">
@@ -25,8 +20,8 @@
 				<div>
 				<table>
 					<tr>
-						<td>N° Grupo 2:</td>
-						<td>
+						<td class="auto-style2">N° Grupo 2:</td>
+						<td class="auto-style1">
 							<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="SeleccionarSucursales.aspx">Listado de sucursales</asp:HyperLink>
 						</td>
 						<td>
