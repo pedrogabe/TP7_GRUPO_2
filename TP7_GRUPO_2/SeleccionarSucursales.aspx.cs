@@ -59,5 +59,17 @@ namespace TP7_GRUPO_2
             sqlDataSourceExtra.SelectCommand = $"SELECT * FROM Sucursal WHERE Id_ProvinciaSucursal={IddeProvincia}";
             sqlDataSourceExtra.DataBind();
         }
+
+        protected void cvLimiteCaracteres_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (args.Value.Length <= 15)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
     }
 }

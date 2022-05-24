@@ -42,6 +42,7 @@
 		    	</td>
 		    	<td>
 		    		<asp:Button ID="btnBusqueda" runat="server" Text="Buscar" OnClick="btnBusqueda_Click" />
+		    	    <asp:CustomValidator ID="cvLimiteCaracteres" runat="server" ControlToValidate="txtBusqueda" EnableClientScript="False" ForeColor="Red" OnServerValidate="cvLimiteCaracteres_ServerValidate">*Error. Se superó el límite de texto</asp:CustomValidator>
 		    	</td>
 		    </tr>
 	    </table>
